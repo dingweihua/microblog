@@ -1,0 +1,7 @@
+Dear {{ user.name }},
+{{ follower.name }} is now your follower. Click on the following link to visit {{ follower.name }}'s profile page:
+
+{{ url_for('users.home', name=follower.name, _external=True) }}
+
+Regards,
+The microblog admin
