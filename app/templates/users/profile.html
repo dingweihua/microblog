@@ -7,7 +7,7 @@
       <td>
         <h1>User: {{ user.name }}</h1>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-        {% if user.last_seen %}<p>Last seen on: {{ user.last_seen.strftime("%Y-%m-%d %H:%M:%S") }}</p>{% endif %}
+        {% if user.last_seen %}<p><em>Last seen on: {{ momentjs(user.last_seen).calendar() }}</em></p>{% endif %}
         <p>{{ user.followers.count() }} followers | 
         {% if user.id == g.user.id %}
           <a href="{{ url_for('users.edit') }}">Edit</a>
