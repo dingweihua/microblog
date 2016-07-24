@@ -6,7 +6,7 @@
     <table>
       <tr>
         <td>Your Name: </td>
-        <td>{{ form.name(size=24) }}</td>
+        <td>{{ form.name(size=24, class='form-control') }}</td>
       </tr>
       <tr>
         <td></td>
@@ -18,11 +18,11 @@
       </tr>
       <tr>
         <td>About Yourself: </td>
-        <td>{{ form.about_me(cols=32, row=4) }}</td>
+        <td>{{ form.about_me(cols=32, row=4, class='form-control') }}</td>
       </tr>
       <tr>
         <td></td>
-        <td><input type="submit" value="Save Changes"></td>
+        <td><input type="submit" class="btn btn-primary" value="Save"></td>
       </tr>
     </table>
   </form>

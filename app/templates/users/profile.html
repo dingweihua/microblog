@@ -7,7 +7,7 @@
       <td>
         <h1>User: {{ user.name }}</h1>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-        {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+        {% if user.last_seen %}<p>Last seen on: {{ user.last_seen.strftime("%Y-%m-%d %H:%M:%S") }}</p>{% endif %}
         <p>{{ user.followers.count() }} followers | 
         {% if user.id == g.user.id %}
           <a href="{{ url_for('users.edit') }}">Edit</a>
@@ -21,13 +21,13 @@
   </table>
 
   {% if user.id == g.user.id %}
-  <div style="width: 400px;"><hr></div>
+  <div><hr></div>
   <form action="" method="POST" name="post">
     {{ form.hidden_tag() }}
     <table>
       <tr>
         <td>Say something: </td>
-        <td>{{ form.post(size=30, maxlength=140) }}</td>
+        <td>{{ form.post(size=30, maxlength=140, class='form-control') }}</td>
         <td>
           {% for error in form.post.errors %}
             <span style="color: red;">[{{ error }}]</span><br>
@@ -36,29 +36,30 @@
       </tr>
       <tr>
         <td></td>
-        <td><input type="submit" value="Post!"></td>
+        <td><br><input type="submit" class="btn btn-primary" value="Post!"></td>
         <td></td>
       </tr>
     </table>
   </form>
   {% endif %}
 
-  <div style="width: 400px;"><hr></div>
+  <div><hr></div>
   {% for post in posts.items %}
     {% include "users/post.html" %}
   {% endfor %}
 
   <div>
-    {% if posts.has_prev %}
-      <a href="{{ url_for('users.home', name=user.name, page=posts.prev_num) }}">&lt;&lt; Newer posts</a>
-    {% else %}
-      &lt;&lt; Newer posts
-    {% endif %}
-    &nbsp;|&nbsp;
-    {% if posts.has_next %}
-      <a href="{{ url_for('users.home', name=user.name, page=posts.next_num) }}">Older posts &gt;&gt;</a>
-    {% else %}
-      Older posts &gt;&gt;
-    {% endif %}
+    <ul class="pager">
+        {% if posts.has_prev %}
+        <li class="previous"><a href="{{ url_for('users.home', name=user.name, page=posts.prev_num) }}">Newer posts</a></li>
+        {% else %}
+        <li class="previous disabled"><a href="#">Newer posts</a></li>
+        {% endif %}
+        {% if posts.has_next %}
+        <li class="next"><a href="{{ url_for('users.home', name=user.name, page=posts.next_num) }}">Older posts</a></li>
+        {% else %}
+        <li class="next disabled"><a href="#">Older posts</a></li>
+        {% endif %}
+    </ul>
   </div>
 {% endblock %}
