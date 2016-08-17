@@ -1,4 +1,4 @@
-import sys
+import sys, re
 from hashlib import md5
 
 from app import app, db
@@ -83,6 +83,10 @@ class User(db.Model):
                 break
             version += 1
         return new_name
+
+    @staticmethod
+    def make_valid_name(name):
+        return re.sub('[^a-zA-Z0-9_\.]', '', name)
 
     def __repr__(self):
         return '<User %r>' % self.name

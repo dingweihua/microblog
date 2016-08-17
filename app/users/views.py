@@ -1,16 +1,22 @@
 from datetime import datetime
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 from werkzeug import check_password_hash, generate_password_hash
+from flask.ext.babel import gettext
 
-from app import db
+from app import db, babel
 from app.emails import follower_notification
 from app.users.forms import RegisterForm, LoginForm, EditForm, PostForm, SearchForm
 from app.users.models import User, Post
 from app.users.decorators import requires_login
-from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
+from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
 
 
 mod = Blueprint('users', __name__, url_prefix='/users')
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())
 
 
 @mod.route('/<name>/', methods=['GET', 'POST'])
@@ -45,6 +51,7 @@ def before_request():
             db.session.add(g.user)
             db.session.commit()
             g.search_form = SearchForm()
+    g.locale = get_locale()
 
 
 @mod.route('/login/', methods=['GET', 'POST'])
@@ -65,7 +72,7 @@ def login():
             session['user_id'] = user.id
             flash('Welcome %s' % user.name)
             return redirect(url_for('users.home', name=user.name))
-        flash('Wrong email or password', 'error-message')
+        flash(gettext('Wrong email or password'))
     return render_template("users/login.html", form=form)
 
 
@@ -77,6 +84,7 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         # get the unique name
+        form.name.data = User.make_valid_name(form.name.data)
         form.name.data = User.make_unique_name(form.name.data)
         # create an user instance not yet stored in the database
         user = User(name=form.name.data, email=form.email.data, \
@@ -128,7 +136,7 @@ def edit():
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Your changers have been saved.')
+        flash('Your changes have been saved.')
         return redirect(url_for('users.home', name=g.user.name))
     else:
         form.name.data = g.user.name

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -34,3 +36,9 @@ MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 # administrator list
 ADMINS = ['dingweihuaic@gmail.com']
+
+# available languages
+LANGUAGES = {
+    'en': 'English',
+    'es': 'Español'
+}

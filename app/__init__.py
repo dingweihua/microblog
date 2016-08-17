@@ -3,7 +3,9 @@ import sys
 
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.json import JSONEncoder
 from flask.ext.mail import Mail
+from flask.ext.babel import Babel
 from .momentjs import momentjs
 
 
@@ -13,6 +15,7 @@ app.jinja_env.globals['momentjs'] = momentjs
 
 db = SQLAlchemy(app)
 mail = Mail(app)
+babel = Babel(app)
 
 ########################
 # Configure Secret Key #
@@ -52,3 +55,17 @@ app.register_blueprint(usersModule)
 #from app.posts.views import mod as postsModule
 #app.register_blueprint(commentsModule)
 #app.register_blueprint(postsModule)
+
+class CustomJSONEncoder(JSONEncoder):
+    """This class adds support for lazy translation texts to Flask's
+    JSON encoder. This is necessary when flashing translated texts."""
+    def default(self, obj):
+        from speaklater import is_lazy_string
+        if is_lazy_string(obj):
+            try:
+                return unicode(obj)  # python 2
+            except NameError:
+                return str(obj)  # python 3
+        return super(CustomJSONEncoder, self).default(obj)
+
+app.json_encoder = CustomJSONEncoder

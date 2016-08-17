@@ -1,4 +1,5 @@
 from flask.ext.wtf import Form, RecaptchaField
+from flask.ext.babel import gettext
 from wtforms import StringField, TextField, PasswordField, BooleanField
 from wtforms.validators import Required, EqualTo, Email
 
@@ -35,9 +36,12 @@ class EditForm(Form):
             return False
         if self.name.data == self.original_name:
             return True
+        if self.name.data != User.make_valid_name(self.name.data):
+            self.name.errors.append(gettext('This name has invalid characters. Please use letters, numbers, dots and underscores only.'))
+            return False
         user = User.query.filter_by(name=self.name.data).first()
         if user != None:
-            self.name.errors.append('This name is already in use. Please choose another one.')
+            self.name.errors.append(gettext('This name is already in use. Please choose another one.'))
             return False
         return True
 
