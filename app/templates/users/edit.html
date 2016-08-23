@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Edit Your Profile</h1>
+  <h1>{{ _('Edit Your Profile') }}</h1>
   <form method="POST" action="." class="form" name="edit">
     {{ form.hidden_tag() }}
     <table>
       <tr>
-        <td>Your Name: </td>
+        <td>{{ _('Your Name') }}: </td>
         <td>{{ form.name(size=24, class='form-control') }}</td>
       </tr>
       <tr>
@@ -17,12 +17,12 @@
         </td>
       </tr>
       <tr>
-        <td>About Yourself: </td>
+        <td>{{ _('About Yourself') }}: </td>
         <td>{{ form.about_me(cols=32, row=4, class='form-control') }}</td>
       </tr>
       <tr>
         <td></td>
-        <td><input type="submit" class="btn btn-primary" value="Save"></td>
+        <td><input type="submit" class="btn btn-primary" value="{{ _('Save') }}"></td>
       </tr>
     </table>
   </form>

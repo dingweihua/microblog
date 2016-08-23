@@ -28,7 +28,7 @@ def home(name, page=1):
         post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post is live now!')
+        flash(gettext('Your post is live now!'))
         redirect(url_for('users.home', name=name, page=page))
     user = User.query.filter_by(name=name).first()
     posts = user.followed_posts().paginate(page, POSTS_PER_PAGE, False) if user else []
@@ -70,7 +70,7 @@ def login():
             # the session can't be modified as it's signed, 
             # it's a safe place to store the user id
             session['user_id'] = user.id
-            flash('Welcome %s' % user.name)
+            flash(gettext('Welcome %(user_name)s', user_name=user.name))
             return redirect(url_for('users.home', name=user.name))
         flash(gettext('Wrong email or password'))
     return render_template("users/login.html", form=form)
@@ -100,7 +100,7 @@ def register():
         session['user_id'] = user.id
        
         # flash will display a message to the user
-        flash('Thanks for registering')
+        flash(gettext('Thanks for registering'))
         # redirect user to the 'home' method of the user module.
         return redirect(url_for('users.home', name=user.name))
     return render_template("users/register.html", form=form)
@@ -136,7 +136,7 @@ def edit():
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Your changes have been saved.')
+        flash(gettext('Your changes have been saved.'))
         return redirect(url_for('users.home', name=g.user.name))
     else:
         form.name.data = g.user.name
@@ -149,18 +149,18 @@ def edit():
 def follow(name):
     user = User.query.filter_by(name=name).first()
     if not user:
-        flash('User %s not found.' % name)
+        flash(gettext('User %(name)s not found.', name=name))
         return redirect(url_for('users.home', name=user.name))
     if user == g.user:
-        flash('You can\'t follow yourself.')
+        flash(gettext('You can\'t follow yourself.'))
         return redirect(url_for('users.home', name=user.name))
     u = g.user.follow(user)
     if u is None:
-        flash('Cannot follow %s.' % name)
+        flash(gettext('Cannot follow %(name)s.', name=name))
         return redirect(url_for('users.home', name=user.name))
     db.session.add(u)
     db.session.commit()
-    flash('You are now following %s.' % name)
+    flash(gettext('You are now following %(name)s.', name=name))
     follower_notification(user, g.user)
     return redirect(url_for('users.home', name=user.name))
 
@@ -170,16 +170,16 @@ def follow(name):
 def unfollow(name):
     user = User.query.filter_by(name=name).first()
     if not user:
-        flash('User %s not found.' % name)
+        flash(gettext('User %(name)s not found.', name=name))
         return redirect(url_for('users.home', name=user.name))
     if user == g.user:
-        flash('You can\'t unfollow yourself.')
+        flash(gettext('You can\'t unfollow yourself.'))
         return redirect(url_for('users.home', name=user.name))
     u = g.user.unfollow(user)
     if u is None:
-        flash('Cannot unfollow %s.' % name)
+        flash(gettext('Cannot unfollow %(name)s.', name=name))
         return redirect(url_for('users.home', name=user.name))
     db.session.add(u)
     db.session.commit()
-    flash('You have stopped following %s.' % name)
+    flash(gettext('You have stopped following %(name)s.', name=name))
     return redirect(url_for('users.home', name=user.name))

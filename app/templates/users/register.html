@@ -11,6 +11,6 @@
     <label>ReCaptcha</label>
     {{ form.recaptcha }}
     <input type="submit" value="Register" class="btn btn-primary">
-    &nbsp;&nbsp;<a href="{{ url_for('users.login') }}">Login</a>
+    &nbsp;&nbsp;<a href="{{ url_for('users.login') }}">{{ _('Login') }}</a>
   </form>
 {% endblock %}

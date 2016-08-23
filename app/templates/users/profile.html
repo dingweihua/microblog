@@ -5,16 +5,16 @@
     <tr valign="top">
       <td><img src="{{ user.avatar(128) }}"></td>
       <td>
-        <h1>User: {{ user.name }}</h1>
+        <h1>{{ _('User') }}: {{ user.name }}</h1>
         {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-        {% if user.last_seen %}<p><em>Last seen on: {{ momentjs(user.last_seen).calendar() }}</em></p>{% endif %}
-        <p>{{ user.followers.count() }} followers | 
+        {% if user.last_seen %}<p><em>{{ _('Last seen on') }}: {{ momentjs(user.last_seen).calendar() }}</em></p>{% endif %}
+        <p>{{ user.followers.count() }} {{ _('followers') }} | 
         {% if user.id == g.user.id %}
-          <a href="{{ url_for('users.edit') }}">Edit</a>
+          <a href="{{ url_for('users.edit') }}">{{ _('Edit') }}</a>
         {% elif g.user.is_following(user) %}
-          <a href="{{ url_for('users.unfollow', name=user.name) }}">Unfollow</a>
+          <a href="{{ url_for('users.unfollow', name=user.name) }}">{{ _('Unfollow') }}</a>
         {% else %}
-          <a href="{{ url_for('users.follow', name=user.name) }}">Follow</a>
+          <a href="{{ url_for('users.follow', name=user.name) }}">{{ _('Follow') }}</a>
         {% endif %}
       </td>
     </tr>
@@ -26,17 +26,17 @@
     {{ form.hidden_tag() }}
     <table>
       <tr>
-        <td>Say something: </td>
+        <td>{{ _('Say something') }}: </td>
         <td>{{ form.post(size=30, maxlength=140, class='form-control') }}</td>
         <td>
           {% for error in form.post.errors %}
-            <span style="color: red;">[{{ error }}]</span><br>
+            <span style="color: red;">[{{ _(error) }}]</span><br>
           {% endfor %}
         </td>
       </tr>
       <tr>
         <td></td>
-        <td><br><input type="submit" class="btn btn-primary" value="Post!"></td>
+        <td><br><input type="submit" class="btn btn-primary" value="{{ _('Post') }}!"></td>
         <td></td>
       </tr>
     </table>
@@ -51,14 +51,14 @@
   <div>
     <ul class="pager">
         {% if posts.has_prev %}
-        <li class="previous"><a href="{{ url_for('users.home', name=user.name, page=posts.prev_num) }}">Newer posts</a></li>
+        <li class="previous"><a href="{{ url_for('users.home', name=user.name, page=posts.prev_num) }}">{{ _('Newer posts') }}</a></li>
         {% else %}
-        <li class="previous disabled"><a href="#">Newer posts</a></li>
+        <li class="previous disabled"><a href="#">{{ _('Newer posts') }}</a></li>
         {% endif %}
         {% if posts.has_next %}
-        <li class="next"><a href="{{ url_for('users.home', name=user.name, page=posts.next_num) }}">Older posts</a></li>
+        <li class="next"><a href="{{ url_for('users.home', name=user.name, page=posts.next_num) }}">{{ _('Older posts') }}</a></li>
         {% else %}
-        <li class="next disabled"><a href="#">Older posts</a></li>
+        <li class="next disabled"><a href="#">{{ _('Older posts') }}</a></li>
         {% endif %}
     </ul>
   </div>

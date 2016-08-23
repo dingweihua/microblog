@@ -18,17 +18,17 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Microblog</a>
+          <a class="navbar-brand" href="#">{{ _('Microblog') }}</a>
           {% if g.user.is_authenticated %}
           <a class="navbar-brand" href="{{ url_for('users.home', name=g.user.name) }}">{{ _('Home') }}</a>
-          <a class="navbar-brand" href="{{ url_for('users.logout') }}">Logout</a>
+          <a class="navbar-brand" href="{{ url_for('users.logout') }}">{{ _('Logout') }}</a>
           {% endif %}
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           {% if g.user.is_authenticated %}
           <form class="navbar-form navbar-right" action="{{ url_for('users.search') }}" method="POST" name="search">
-            {{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20, class='form-control', placeholder='Search') }}
-            <input type="submit" class="btn btn-success" value="Search" />
+            {{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20, class='form-control', placeholder=_('Search')) }}
+            <input type="submit" class="btn btn-success" value={{ _('Search') }} />
           </form>
           {% endif %}
         </div><!--/.navbar-collapse -->

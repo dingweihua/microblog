@@ -6,6 +6,6 @@
     {{ render_field(form.email, class="form-control") }}
     {{ render_field(form.password, class="form-control") }}
     <input type="submit" value="Login" class="btn btn-success">
-    &nbsp;&nbsp;<a href="{{ url_for('users.register') }}">Register</a>
+    &nbsp;&nbsp;<a href="{{ url_for('users.register') }}">{{ _('Register') }}</a>
   </form>
 {% endblock %}

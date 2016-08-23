@@ -1,5 +1,5 @@
-<p>Dear, {{ user.name }}</p>
-<p><a href="{{ url_for('users.home', name=follower.name, _external=True) }}"></a>{{ follower.name }} is now your follower.</p>
+<p>{{ _('Dear %(user_name)s,', user_name=user.name) }}</p>
+<p><a href="{{ url_for('users.home', name=follower.name, _external=True) }}"></a>{{ _('%(follower_name)s is now your follower.', follower_name=follower.name) }}</p>
 <table>
   <tr valign="top">
     <td><img src="{{ follower.avatar(50) }}"></td>
@@ -9,5 +9,5 @@
     </td>
   </tr>
 </table>
-<p>Regards,</p>
-<p>The <code>microblog</code> admin</p>
+<p>{{ _('Regards') }},</p>
+<p>{{ _('The %(microblog_code)s admin', microblog_code='<code>microblog</code>') }}</p>

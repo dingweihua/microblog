@@ -40,5 +40,6 @@ ADMINS = ['dingweihuaic@gmail.com']
 # available languages
 LANGUAGES = {
     'en': 'English',
-    'es': 'Español'
+    'es': 'Español',
+    'zh': '简体中文(中国)'
 }

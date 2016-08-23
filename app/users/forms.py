@@ -7,25 +7,25 @@ from app.users.models import User
 
 
 class LoginForm(Form):
-    email = TextField('Email address', [Required(), Email()])
-    password = PasswordField('Password', [Required()])
+    email = TextField(gettext('Email address'), [Required(), Email()])
+    password = PasswordField(gettext('Password'), [Required()])
 
 
 class RegisterForm(Form):
-    name = TextField('NickName', [Required()])
-    email = TextField('Email address', [Required(), Email()])
-    password = PasswordField('Password', [Required()])
-    confirm = PasswordField('Repeat Password', [
+    name = TextField(gettext('NickName'), [Required()])
+    email = TextField(gettext('Email address'), [Required(), Email()])
+    password = PasswordField(gettext('Password'), [Required()])
+    confirm = PasswordField(gettext('Repeat Password'), [
         Required(),
         EqualTo('password', message='Passwords must match')
     ])
-    accept_tos = BooleanField('I accept the TOS', [Required()])
+    accept_tos = BooleanField(gettext('I accept the TOS'), [Required()])
     recaptcha = RecaptchaField()
 
 
 class EditForm(Form):
-    name = StringField('Name', [Required()])
-    about_me = TextField('About me', [Required()])
+    name = StringField(gettext('Name'), [Required()])
+    about_me = TextField(gettext('About me'), [Required()])
 
     def __init__(self, original_name, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
@@ -47,8 +47,8 @@ class EditForm(Form):
 
 
 class PostForm(Form):
-    post = StringField('post', validators=[Required()])
+    post = StringField(gettext('post'), validators=[Required()])
 
 
 class SearchForm(Form):
-    search = StringField('search', validators=[Required()])
+    search = StringField(gettext('search'), validators=[Required()])
