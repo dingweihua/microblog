@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 from werkzeug import check_password_hash, generate_password_hash
@@ -65,7 +67,7 @@ def login():
     # make sure data are valid, but doesn't validate password is right
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        # we use werzeug to validate user's password
+        # we use werkzeug to validate user's password
         if user and check_password_hash(user.password, form.password.data):
             # the session can't be modified as it's signed, 
             # it's a safe place to store the user id

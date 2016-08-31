@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask.ext.wtf import Form, RecaptchaField
 from flask.ext.babel import gettext
 from wtforms import StringField, TextField, PasswordField, BooleanField
@@ -17,7 +19,7 @@ class RegisterForm(Form):
     password = PasswordField(gettext('Password'), [Required()])
     confirm = PasswordField(gettext('Repeat Password'), [
         Required(),
-        EqualTo('password', message='Passwords must match')
+        EqualTo('password', message=gettext('Passwords must match'))
     ])
     accept_tos = BooleanField(gettext('I accept the TOS'), [Required()])
     recaptcha = RecaptchaField()

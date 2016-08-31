@@ -1,4 +1,4 @@
-# Spanish translations for PROJECT.
+# Chinese translations for PROJECT.
 # Copyright (C) 2016 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-08-31 17:51+0800\n"
-"PO-Revision-Date: 2016-08-17 16:08+0800\n"
+"PO-Revision-Date: 2016-08-23 16:17+0800\n"
 "Last-Translator: \n"
-"Language-Team: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language-Team: zh\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,229 +20,226 @@ msgstr ""
 #: app/emails.py:22
 #, python-format
 msgid "[microblog] %(follower_name)s is now following you!"
-msgstr ""
+msgstr "[microblog] ％(follower_name)s关注了你！"
 
 #: app/templates/404.html:3
 msgid "My Site"
-msgstr ""
+msgstr "我的主页"
 
 #: app/templates/404.html:13
 msgid "404 Error: Page Not Found!"
-msgstr ""
+msgstr "404 Error - 未找到相关页面"
 
 #: app/templates/base.html:21
 msgid "Microblog"
-msgstr ""
+msgstr "微博"
 
 #: app/templates/base.html:23
 msgid "Home"
-msgstr "El hogar."
+msgstr "首页"
 
 #: app/templates/base.html:24
 msgid "Logout"
-msgstr ""
+msgstr "注销"
 
 #: app/templates/base.html:30 app/templates/base.html:31
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: app/templates/search_results.html:5
 #, python-format
 msgid "Search results for: \"%(query)s\""
-msgstr ""
+msgstr "“%(query)s”的搜索结果："
 
 #: app/templates/users/edit.html:3
 msgid "Edit Your Profile"
-msgstr ""
+msgstr "编辑您的资料"
 
 #: app/templates/users/edit.html:8
 msgid "Your Name"
-msgstr ""
+msgstr "您的姓名"
 
 #: app/templates/users/edit.html:20
 msgid "About Yourself"
-msgstr ""
+msgstr "关于自己"
 
 #: app/templates/users/edit.html:25
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: app/templates/users/follower_email.html:1
 #, python-format
 msgid "Dear %(user_name)s,"
-msgstr ""
+msgstr "亲爱的 %(user_name)s，"
 
 #: app/templates/users/follower_email.html:2
 #, python-format
 msgid "%(follower_name)s is now your follower."
-msgstr ""
+msgstr "[microblog] ％(follower_name)s关注了你！"
 
 #: app/templates/users/follower_email.html:12
 msgid "Regards"
-msgstr ""
+msgstr "祝好"
 
 #: app/templates/users/follower_email.html:13
 #, python-format
 msgid "The %(microblog_code)s admin"
-msgstr ""
+msgstr "%(microblog_code)s 管理员"
 
 #: app/templates/users/login.html:9
 msgid "Register"
-msgstr ""
+msgstr "注册"
 
 #: app/templates/users/post.html:6
 #, python-format
 msgid "%(name)s said on %(when)s:"
-msgstr "%(name)s dijo en %(when)s:"
+msgstr "%(name)s 发表于 %(when)s："
 
 #: app/templates/users/profile.html:8
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: app/templates/users/profile.html:10
 msgid "Last seen on"
-msgstr ""
+msgstr "上次登录于"
 
 #: app/templates/users/profile.html:11
 msgid "followers"
-msgstr ""
+msgstr "粉丝"
 
 #: app/templates/users/profile.html:13
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: app/templates/users/profile.html:15
 msgid "Unfollow"
-msgstr ""
+msgstr "取消关注"
 
 #: app/templates/users/profile.html:17
 msgid "Follow"
-msgstr ""
+msgstr "关注"
 
 #: app/templates/users/profile.html:29
 msgid "Say something"
-msgstr ""
+msgstr "发表文章"
 
 #: app/templates/users/profile.html:39
 msgid "Post"
-msgstr ""
+msgstr "发布"
 
 #: app/templates/users/profile.html:54 app/templates/users/profile.html:56
 msgid "Newer posts"
-msgstr ""
+msgstr "新的文章"
 
 #: app/templates/users/profile.html:59 app/templates/users/profile.html:61
 msgid "Older posts"
-msgstr ""
+msgstr "旧的文章"
 
 #: app/templates/users/register.html:14
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #: app/users/decorators.py:11
 msgid "You need to be signed in for this page."
-msgstr ""
+msgstr "请先登录再访问此页面。"
 
 #: app/users/forms.py:12 app/users/forms.py:18
 msgid "Email address"
-msgstr ""
+msgstr "邮箱"
 
 #: app/users/forms.py:13 app/users/forms.py:19
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: app/users/forms.py:17
 msgid "NickName"
-msgstr ""
+msgstr "昵称"
 
 #: app/users/forms.py:20
-#, fuzzy
 msgid "Repeat Password"
-msgstr "Correo electrónico o contraseña incorrectos"
+msgstr "重复密码"
 
 #: app/users/forms.py:24
 msgid "I accept the TOS"
-msgstr ""
+msgstr "我接受服务条款"
 
 #: app/users/forms.py:29
 msgid "Name"
-msgstr ""
+msgstr "名字"
 
 #: app/users/forms.py:30
 msgid "About me"
-msgstr ""
+msgstr "关于自己"
 
 #: app/users/forms.py:42
 msgid ""
 "This name has invalid characters. Please use letters, numbers, dots and "
 "underscores only."
-msgstr ""
-"Este nombre tiene caracteres no válidos. Por favor, use letras, números, "
-"puntos y guiones solamente."
+msgstr "名字中包含不合法字符，请使用字母，数字，实点和下划线代替。"
 
 #: app/users/forms.py:46
 msgid "This name is already in use. Please choose another one."
-msgstr "Este nombre de usuario ya se encuentra en uso, por favor, elije otro."
+msgstr "名字已被使用，请重新填写。"
 
 #: app/users/forms.py:52
 msgid "post"
-msgstr ""
+msgstr "发布"
 
 #: app/users/forms.py:56
 msgid "search"
-msgstr ""
+msgstr "搜索"
 
 #: app/users/views.py:34
 msgid "Your post is live now!"
-msgstr ""
+msgstr "文章已发布成功！"
 
 #: app/users/views.py:76
 #, python-format
 msgid "Welcome %(user_name)s"
-msgstr ""
+msgstr "欢迎 %(user_name)s"
 
 #: app/users/views.py:78
 msgid "Wrong email or password"
-msgstr "Correo electrónico o contraseña incorrectos"
+msgstr "邮箱或密码错误"
 
 #: app/users/views.py:106
 msgid "Thanks for registering"
-msgstr ""
+msgstr "感谢您的注册"
 
 #: app/users/views.py:142
 msgid "Your changes have been saved."
-msgstr ""
+msgstr "您的更改已保存成功。"
 
 #: app/users/views.py:155 app/users/views.py:176
 #, python-format
 msgid "User %(name)s not found."
-msgstr ""
+msgstr "用户 %(name)s 没有找到。"
 
 #: app/users/views.py:158
 msgid "You can't follow yourself."
-msgstr ""
+msgstr "不能关注自己。"
 
 #: app/users/views.py:162
 #, python-format
 msgid "Cannot follow %(name)s."
-msgstr ""
+msgstr "不能关注 %(name)s。"
 
 #: app/users/views.py:166
 #, python-format
 msgid "You are now following %(name)s."
-msgstr ""
+msgstr "你已经关注了 %(name)s。"
 
 #: app/users/views.py:179
 msgid "You can't unfollow yourself."
-msgstr ""
+msgstr "不能关注自己。"
 
 #: app/users/views.py:183
 #, python-format
 msgid "Cannot unfollow %(name)s."
-msgstr ""
+msgstr "不能关注 %(name)s。"
 
 #: app/users/views.py:187
 #, python-format
 msgid "You have stopped following %(name)s."
-msgstr ""
+msgstr "你已经取消关注了 %(name)s。"
 
